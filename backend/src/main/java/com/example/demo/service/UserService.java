@@ -8,16 +8,19 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dto.LoginRequest;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.security.JwtUtil;
 
 @Service
 public class UserService {
+    private final JwtUtil jwtUtil;
 
     private final UserRepository repo;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository repo, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository repo, BCryptPasswordEncoder passwordEncoder,JwtUtil jwtUtil) {
         this.repo = repo;
         this.passwordEncoder = passwordEncoder;
+        this.jwtUtil = jwtUtil;
     }
 
     public User saveUser(User user) {
@@ -60,9 +63,12 @@ public String login(LoginRequest request) {
             request.getPassword(),
             user.getPassword())) {
 
-        return "Login Successful";
+        return jwtUtil.generateToken(user.getEmail());
     }
 
     return "Invalid Password";
+}
+public String getEmailFromToken(String token) {
+    return jwtUtil.extractEmail(token);
 }
 }
