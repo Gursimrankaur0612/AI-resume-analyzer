@@ -43,10 +43,25 @@ public ResumeAnalysisResponse analyzeResume(
 
     String text = pdfService.extractText(file);
 
-    List<String> skills = pdfService.extractSkills(text);
+List<String> skills = pdfService.extractSkills(text);
 
-    int score = pdfService.calculateScore(skills);
 
-    return new ResumeAnalysisResponse(skills, score);
+
+List<String> jobSkills = List.of(
+        "java",
+        "spring boot",
+        "mysql",
+        "rest api",
+        "postgresql",
+        "microservices"
+);
+int score = pdfService.calculateScore(skills);
+
+int atsMatch = service.calculateATSMatch(skills, jobSkills);
+
+List<String> missingSkills = service.findMissingSkills(skills, jobSkills);
+System.out.println("ATS Match = " + atsMatch);
+System.out.println("Missing Skills = " + missingSkills);
+return new ResumeAnalysisResponse(skills, score, atsMatch, missingSkills);
 }
 }
