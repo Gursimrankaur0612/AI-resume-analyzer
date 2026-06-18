@@ -60,8 +60,15 @@ int score = pdfService.calculateScore(skills);
 int atsMatch = service.calculateATSMatch(skills, jobSkills);
 
 List<String> missingSkills = service.findMissingSkills(skills, jobSkills);
-System.out.println("ATS Match = " + atsMatch);
-System.out.println("Missing Skills = " + missingSkills);
-return new ResumeAnalysisResponse(skills, score, atsMatch, missingSkills);
+List<String> suggestions =
+        service.generateSuggestions(missingSkills);
+
+return new ResumeAnalysisResponse(
+        skills,
+        score,
+        atsMatch,
+        missingSkills,
+        suggestions
+);
 }
 }

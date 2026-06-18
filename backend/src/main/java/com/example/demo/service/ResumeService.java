@@ -57,4 +57,18 @@ public List<String> findMissingSkills(
 
     return missingSkills;
 }
+public List<String> generateSuggestions(
+        List<String> missingSkills) {
+
+    List<String> suggestions = new ArrayList<>();
+
+    for(String skill : missingSkills) {
+
+        suggestions.add(
+            "Consider adding experience with " + skill
+        );
+    }
+
+    return suggestions;
+}
 }
