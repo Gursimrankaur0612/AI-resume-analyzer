@@ -20,55 +20,57 @@ public class ResumeService {
     public Resume saveResume(Resume resume) {
         return repo.save(resume);
     }
-    public int calculateATSMatch(List<String> resumeSkills, List<String> jobSkills) {
 
-    int matched = 0;
+    public int calculateATSMatch(
+            List<String> resumeSkills,
+            List<String> jobSkills) {
 
-    for (String skill : resumeSkills) {
-        if (jobSkills.contains(skill.toLowerCase())) {
-            matched++;
-        }
-    }
+        int matched = 0;
 
-    return (matched * 100) / jobSkills.size();
-}
-public List<String> findMissingSkills(
-        List<String> resumeSkills,
-        List<String> jobSkills) {
-
-    List<String> missingSkills = new ArrayList<>();
-
-    for(String skill : jobSkills) {
-
-        boolean found = false;
-
-        for(String resumeSkill : resumeSkills) {
-
-            if(skill.equalsIgnoreCase(resumeSkill)) {
-                found = true;
-                break;
+        for (String skill : resumeSkills) {
+            if (jobSkills.contains(skill.toLowerCase())) {
+                matched++;
             }
         }
 
-        if(!found) {
-            missingSkills.add(skill);
+        return (matched * 100) / jobSkills.size();
+    }
+
+    public List<String> findMissingSkills(
+            List<String> resumeSkills,
+            List<String> jobSkills) {
+
+        List<String> missingSkills = new ArrayList<>();
+
+        for (String skill : jobSkills) {
+
+            boolean found = false;
+
+            for (String resumeSkill : resumeSkills) {
+
+                if (skill.equalsIgnoreCase(resumeSkill)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                missingSkills.add(skill);
+            }
         }
+
+        return missingSkills;
     }
 
-    return missingSkills;
-}
-public List<String> generateSuggestions(
-        List<String> missingSkills) {
+    public List<String> generateSuggestions(
+            List<String> missingSkills) {
 
-    List<String> suggestions = new ArrayList<>();
+        List<String> suggestions = new ArrayList<>();
 
-    for(String skill : missingSkills) {
+        for (String skill : missingSkills) {
+            suggestions.add("Consider learning " + skill);
+        }
 
-        suggestions.add(
-            "Consider adding experience with " + skill
-        );
+        return suggestions;
     }
-
-    return suggestions;
-}
 }
