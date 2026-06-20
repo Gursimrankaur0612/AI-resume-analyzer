@@ -6,15 +6,19 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Resume;
+import com.example.demo.model.ResumeAnalysis;
+import com.example.demo.repository.ResumeAnalysisRepository;
 import com.example.demo.repository.ResumeRepository;
 
 @Service
 public class ResumeService {
 
     private final ResumeRepository repo;
+    private final ResumeAnalysisRepository analysisRepo;
 
-    public ResumeService(ResumeRepository repo) {
+    public ResumeService(ResumeRepository repo, ResumeAnalysisRepository analysisRepo) {
         this.repo = repo;
+        this.analysisRepo = analysisRepo;
     }
 
     public Resume saveResume(Resume resume) {
@@ -73,4 +77,7 @@ public class ResumeService {
 
         return suggestions;
     }
+    public List<ResumeAnalysis> getAllAnalysis() {
+    return analysisRepo.findAll();
+}
 }

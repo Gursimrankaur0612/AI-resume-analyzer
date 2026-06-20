@@ -20,6 +20,11 @@ public class ResumeAnalysis {
     private int score;
 
     private int atsMatch;
+    private Long jobId;
+
+private String jobTitle;
+
+private String companyName;
 
     @Column(length = 1000)
     private String missingSkills;
@@ -67,4 +72,27 @@ public class ResumeAnalysis {
     public LocalDateTime getAnalyzedAt() {
         return analyzedAt;
     }
+    public Long getJobId() {
+    return jobId;
+}
+
+public void setJobId(Long jobId) {
+    this.jobId = jobId;
+}
+
+public String getJobTitle() {
+    return jobTitle;
+}
+
+public void setJobTitle(String jobTitle) {
+    this.jobTitle = jobTitle;
+}
+
+public String getCompanyName() {
+    return companyName;
+}
+
+public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+}
 }

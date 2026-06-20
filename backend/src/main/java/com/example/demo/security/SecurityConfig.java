@@ -31,6 +31,7 @@ public class SecurityConfig {
     .requestMatchers("/auth/**").permitAll()
     .requestMatchers("/users/**").permitAll()
     .requestMatchers("/resume/**").permitAll()
+    .requestMatchers("/api/jobdescriptions/**").permitAll()
     .anyRequest().authenticated()
 )
             .addFilterBefore(
