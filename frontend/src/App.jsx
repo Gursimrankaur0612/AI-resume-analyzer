@@ -1,11 +1,12 @@
 import Dashboard from "./pages/Dashboard";
+import UploadResume from "./pages/UploadResume";
 
 function App() {
   return (
-    <div>
-      <h1>AI Resume Analyzer</h1>
+    <>
       <Dashboard />
-    </div>
+      <UploadResume />
+    </>
   );
 }
 
