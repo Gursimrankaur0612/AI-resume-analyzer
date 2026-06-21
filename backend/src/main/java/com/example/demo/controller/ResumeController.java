@@ -2,22 +2,29 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.model.DashboardResponse;
 import com.example.demo.model.JobDescription;
 import com.example.demo.model.Resume;
 import com.example.demo.model.ResumeAnalysis;
 import com.example.demo.model.ResumeAnalysisResponse;
+import com.example.demo.model.SkillCount;
 import com.example.demo.repository.JobDescriptionRepository;
+import com.example.demo.repository.ResumeAnalysisRepository;
+import com.example.demo.service.PdfReportService;
 import com.example.demo.service.PdfService;
 import com.example.demo.service.ResumeAnalysisService;
 import com.example.demo.service.ResumeService;
-import com.example.demo.model.DashboardResponse;
 
 @RestController
 @RequestMapping("/resume")
@@ -27,17 +34,23 @@ public class ResumeController {
     private final PdfService pdfService;
     private final ResumeAnalysisService analysisService;
     private final JobDescriptionRepository jobDescriptionRepository;
+    private final PdfReportService pdfReportService;
+    private final ResumeAnalysisRepository analysisRepository;
 
     public ResumeController(
             ResumeService service,
             PdfService pdfService,
             ResumeAnalysisService analysisService,
-            JobDescriptionRepository jobDescriptionRepository) {
+            JobDescriptionRepository jobDescriptionRepository,
+            PdfReportService pdfReportService,
+            ResumeAnalysisRepository analysisRepository) {
 
         this.service = service;
         this.pdfService = pdfService;
         this.analysisService = analysisService;
         this.jobDescriptionRepository = jobDescriptionRepository;
+        this.pdfReportService = pdfReportService;
+        this.analysisRepository = analysisRepository;
     }
 
     @PostMapping("/upload")
@@ -121,4 +134,27 @@ public DashboardResponse getDashboard() {
     public List<ResumeAnalysis> getHistory() {
         return analysisService.getAll();
     }
+    @GetMapping("/top-missing-skills")
+public List<SkillCount> getTopMissingSkills() {
+    return analysisService.getTopMissingSkills();
+}
+@GetMapping("/report/{id}")
+public ResponseEntity<byte[]> downloadReport(
+        @PathVariable Long id)
+        throws Exception {
+
+    ResumeAnalysis analysis =
+            analysisRepository.findById(id)
+            .orElseThrow();
+
+    byte[] pdf =
+            pdfReportService.generateReport(analysis);
+
+    return ResponseEntity.ok()
+            .header(
+                    HttpHeaders.CONTENT_DISPOSITION,
+                    "attachment; filename=report.pdf")
+            .contentType(MediaType.APPLICATION_PDF)
+            .body(pdf);
+}
 }
