@@ -3,14 +3,12 @@ import axios from "axios";
 import AnalysisResult from "./AnalysisResult";
 
 function ResumeUpload() {
-
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
 
   const handleUpload = async () => {
-
     if (!file) {
-      alert("Please select a PDF");
+      alert("Select a PDF first");
       return;
     }
 
@@ -19,29 +17,23 @@ function ResumeUpload() {
     formData.append("jobId", 1);
 
     try {
-
       const response = await axios.post(
         "http://localhost:8080/resume/analyze",
         formData
       );
 
       console.log(response.data);
-
       setResult(response.data);
 
       alert("Resume analyzed successfully!");
-
     } catch (error) {
-
       console.error(error);
       alert("Upload failed");
-
     }
   };
 
   return (
-    <div className="card p-3 mt-4">
-
+    <div className="card p-4 mt-4">
       <h2>Upload Resume</h2>
 
       <input
@@ -61,13 +53,12 @@ function ResumeUpload() {
       </button>
 
       {file && (
-        <p className="mt-2">
+        <p className="mt-3">
           Selected File: {file.name}
         </p>
       )}
 
-      <AnalysisResult result={result} />
-
+      {result && <AnalysisResult result={result} />}
     </div>
   );
 }
