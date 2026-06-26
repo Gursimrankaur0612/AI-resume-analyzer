@@ -19,6 +19,43 @@ function History() {
     console.error(error);
   }
 };
+const downloadReport = async (id) => {
+
+  try {
+
+    const response = await axios.get(
+      `http://localhost:8080/resume/report/${id}`,
+      {
+        responseType: "blob",
+      }
+    );
+
+    const url = window.URL.createObjectURL(
+      new Blob([response.data])
+    );
+
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = `Resume_Report_${id}.pdf`;
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    window.URL.revokeObjectURL(url);
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert("Download failed");
+
+  }
+
+};
 
   useEffect(() => {
     axios
@@ -68,11 +105,21 @@ function History() {
   {new Date(item.analyzedAt)
     .toLocaleString()}
 </td>
-              <td>
-                <button className="btn btn-sm btn-danger" onClick={() => deleteAnalysis(item.id)}>
-                  Delete
-                </button>
-              </td>
+             <td>
+  <button
+    className="btn btn-success btn-sm me-2"
+    onClick={() => downloadReport(item.id)}
+  >
+    Download
+  </button>
+
+  <button
+    className="btn btn-danger btn-sm"
+    onClick={() => deleteAnalysis(item.id)}
+  >
+    Delete
+  </button>
+</td>
             </tr>
           ))}
         </tbody>

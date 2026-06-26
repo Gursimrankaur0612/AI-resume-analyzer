@@ -1,6 +1,7 @@
 import Dashboard from "./components/Dashboard";
 import ResumeUpload from "./components/ResumeUpload";
 import History from "./components/History";
+import TopSkillsChart from "./components/TopSkillsChart";
 
 function App() {
 
@@ -13,6 +14,9 @@ function App() {
 
       <Dashboard />
 
+      <hr />
+      <TopSkillsChart />
+      
       <hr />
 
       <ResumeUpload />
