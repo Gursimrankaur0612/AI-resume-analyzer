@@ -84,4 +84,7 @@ public List<SkillCount> getTopMissingSkills() {
                             e.getValue()))
             .toList();
 }
+public void delete(Long id) {
+    repo.deleteById(id);
+}
 }

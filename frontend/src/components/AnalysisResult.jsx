@@ -50,6 +50,15 @@ function AnalysisResult({ result }) {
           <p>No missing skills 🎉</p>
         )}
       </div>
+      <h3>AI Feedback</h3>
+
+<div className="card mt-3">
+  <div className="card-body">
+    <pre style={{ whiteSpace: "pre-wrap" }}>
+      {result.aiFeedback}
+    </pre>
+  </div>
+</div>
     </div>
   );
 }

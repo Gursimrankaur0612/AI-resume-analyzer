@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ import com.example.demo.model.ResumeAnalysisResponse;
 import com.example.demo.model.SkillCount;
 import com.example.demo.repository.JobDescriptionRepository;
 import com.example.demo.repository.ResumeAnalysisRepository;
+import com.example.demo.service.GeminiService;
 import com.example.demo.service.PdfReportService;
 import com.example.demo.service.PdfService;
 import com.example.demo.service.ResumeAnalysisService;
@@ -36,14 +38,16 @@ public class ResumeController {
     private final JobDescriptionRepository jobDescriptionRepository;
     private final PdfReportService pdfReportService;
     private final ResumeAnalysisRepository analysisRepository;
+    private final GeminiService geminiService;
 
-    public ResumeController(
-            ResumeService service,
-            PdfService pdfService,
-            ResumeAnalysisService analysisService,
-            JobDescriptionRepository jobDescriptionRepository,
-            PdfReportService pdfReportService,
-            ResumeAnalysisRepository analysisRepository) {
+public ResumeController(
+       ResumeService service,
+        PdfService pdfService,
+        ResumeAnalysisService analysisService,
+        JobDescriptionRepository jobDescriptionRepository,
+        PdfReportService pdfReportService,
+        ResumeAnalysisRepository analysisRepository,
+        GeminiService geminiService) {
 
         this.service = service;
         this.pdfService = pdfService;
@@ -51,6 +55,7 @@ public class ResumeController {
         this.jobDescriptionRepository = jobDescriptionRepository;
         this.pdfReportService = pdfReportService;
         this.analysisRepository = analysisRepository;
+        this.geminiService = geminiService;
     }
 
     @PostMapping("/upload")
@@ -99,11 +104,19 @@ public class ResumeController {
 
         List<String> suggestions =
                 service.generateSuggestions(missingSkills);
+                String aiFeedback =
+        geminiService.generateFeedback(
+                text,
+                jobDescription != null
+                        ? jobDescription.getDescription()
+                        : ""
+        );
 
         ResumeAnalysis analysis = new ResumeAnalysis();
 
         analysis.setUserEmail("demo@test.com");
-       
+        //analysis.setAiFeedback(aiFeedback);
+
         analysis.setMissingSkills(
                 String.join(", ", missingSkills));
         analysis.setJobId(jobId);
@@ -111,6 +124,7 @@ public class ResumeController {
         analysis.setCompanyName(jobDescription != null ? jobDescription.getCompanyName() : null);
          analysis.setScore(score);
         analysis.setAtsMatch(atsMatch);
+
 
         analysisService.save(analysis);
 
@@ -122,7 +136,8 @@ public class ResumeController {
         score,
         atsMatch,
         missingSkills,
-        suggestions
+        suggestions,
+        aiFeedback
 );
     }
     @GetMapping("/dashboard")
@@ -156,5 +171,11 @@ public ResponseEntity<byte[]> downloadReport(
                     "attachment; filename=report.pdf")
             .contentType(MediaType.APPLICATION_PDF)
             .body(pdf);
+}
+@DeleteMapping("/history/{id}")
+public void deleteHistory(
+        @PathVariable Long id) {
+
+    analysisService.delete(id);
 }
 }

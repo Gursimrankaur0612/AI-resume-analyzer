@@ -16,6 +16,8 @@ public class ResumeAnalysisResponse {
 
     private List<String> suggestions;
 
+    private String aiFeedback;
+
     public ResumeAnalysisResponse(
             String jobTitle,
             String companyName,
@@ -24,7 +26,8 @@ public class ResumeAnalysisResponse {
             int score,
             int atsMatch,
             List<String> missingSkills,
-            List<String> suggestions) {
+            List<String> suggestions,
+            String aiFeedback) {
 
         this.jobTitle = jobTitle;
         this.companyName = companyName;
@@ -34,6 +37,7 @@ public class ResumeAnalysisResponse {
         this.atsMatch = atsMatch;
         this.missingSkills = missingSkills;
         this.suggestions = suggestions;
+        this.aiFeedback = aiFeedback;
     }
 
     public String getJobTitle() {
@@ -67,4 +71,13 @@ public class ResumeAnalysisResponse {
     public List<String> getSuggestions() {
         return suggestions;
     }
+
+    public String getAiFeedback() {
+        return aiFeedback;
+    }
+
+    public void setAiFeedback(String aiFeedback) {
+        this.aiFeedback = aiFeedback;
+    }
+ 
 }
