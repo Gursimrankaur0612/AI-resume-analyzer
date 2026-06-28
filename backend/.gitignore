@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+# Environment files
+.env
+.env.*
+
+# Local configuration
+backend/src/main/resources/application.properties
+
+# IDE files
+.vscode/
+.idea/
+
+# Build folders
+target/
