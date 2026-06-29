@@ -82,5 +82,69 @@ try {
     e.printStackTrace();
     return "Unable to parse AI feedback.";
 }
+    
+}
+public String generateInterviewQuestions(String resumeText, String jobDescription) {
+
+    String prompt = """
+            You are an experienced technical interviewer.
+
+            Resume:
+            %s
+
+            Job Description:
+            %s
+
+            Generate:
+
+            1. Five Technical Questions
+            2. Three HR Questions
+            3. Two Scenario-Based Questions
+
+            Return only the questions in plain text.
+            """.formatted(resumeText, jobDescription);
+
+    String requestBody = """
+            {
+              "contents":[
+                {
+                  "parts":[
+                    {
+                      "text":"%s"
+                    }
+                  ]
+                }
+              ]
+            }
+            """.formatted(prompt.replace("\"", "\\\""));
+
+    String url =
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
+                    + apiKey;
+
+    String response = webClient.post()
+            .uri(url)
+            .contentType(MediaType.APPLICATION_JSON)
+            .bodyValue(requestBody)
+            .retrieve()
+            .bodyToMono(String.class)
+            .block();
+
+    try {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(response);
+
+        return root
+                .path("candidates")
+                .get(0)
+                .path("content")
+                .path("parts")
+                .get(0)
+                .path("text")
+                .asText();
+
+    } catch (Exception e) {
+        return "Unable to generate interview questions.";
     }
+}
 }

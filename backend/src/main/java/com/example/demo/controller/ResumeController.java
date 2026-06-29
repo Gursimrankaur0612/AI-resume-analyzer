@@ -140,6 +140,23 @@ public ResumeController(
         aiFeedback
 );
     }
+    @PostMapping("/interview-questions")
+public String generateInterviewQuestions(
+        @RequestParam("file") MultipartFile file,
+        @RequestParam("jobId") Long jobId)
+        throws Exception {
+                System.out.println("Interview endpoint reached!");
+
+    String resumeText = pdfService.extractText(file);
+
+    JobDescription jobDescription =
+            jobDescriptionRepository.findById(jobId)
+            .orElseThrow();
+
+    return geminiService.generateInterviewQuestions(
+            resumeText,
+            jobDescription.getDescription());
+}
     @GetMapping("/dashboard")
 public DashboardResponse getDashboard() {
     return analysisService.getDashboardStats();
