@@ -157,6 +157,22 @@ public String generateInterviewQuestions(
             resumeText,
             jobDescription.getDescription());
 }
+@PostMapping("/improve")
+public String improveResume(
+        @RequestParam("file") MultipartFile file,
+        @RequestParam("jobId") Long jobId)
+        throws Exception {
+
+    String resumeText = pdfService.extractText(file);
+
+    JobDescription jobDescription =
+            jobDescriptionRepository.findById(jobId)
+                    .orElseThrow();
+
+    return geminiService.improveResume(
+            resumeText,
+            jobDescription.getDescription());
+}
     @GetMapping("/dashboard")
 public DashboardResponse getDashboard() {
     return analysisService.getDashboardStats();
