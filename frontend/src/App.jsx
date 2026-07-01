@@ -1,31 +1,50 @@
-import Dashboard from "./components/Dashboard";
-import ResumeUpload from "./components/ResumeUpload";
-import History from "./components/History";
-import TopSkillsChart from "./components/TopSkillsChart";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+
+import DashboardPage from "./pages/DashboardPage";
+import ResumeAnalyzerPage from "./pages/ResumeAnalyzerPage";
+import InterviewPage from "./pages/InterviewPage";
+import ResumeImproverPage from "./pages/ResumeImproverPage";
+import HistoryPage from "./pages/HistoryPage";
 
 function App() {
-
   return (
-    <div className="container mt-4">
+    <BrowserRouter>
 
-      <h1 className="text-center mb-4">
-        AI Resume Analyzer
-      </h1>
+      <Navbar />
 
-      <Dashboard />
+      <div className="container mt-4">
 
-      <hr />
-      <TopSkillsChart />
-      
-      <hr />
+        <Routes>
 
-      <ResumeUpload />
+          <Route path="/" element={<DashboardPage />} />
 
-      <hr />
+          <Route
+            path="/analyze"
+            element={<ResumeAnalyzerPage />}
+          />
 
-      <History />
+          <Route
+            path="/interview"
+            element={<InterviewPage />}
+          />
 
-    </div>
+          <Route
+            path="/improver"
+            element={<ResumeImproverPage />}
+          />
+
+          <Route
+            path="/history"
+            element={<HistoryPage />}
+          />
+
+        </Routes>
+
+      </div>
+
+    </BrowserRouter>
   );
 }
 
