@@ -27,14 +27,14 @@ return (
     <div className="row g-4">
 
       <div className="col-md-4">
-        <div className="card shadow border-0 h-100">
+        <div className="card shadow border-0 h-100 bg-primary text-white">
           <div className="card-body text-center">
 
-            <i className="bi bi-file-earmark-person-fill display-4 text-primary"></i>
+            <i className="bi bi-file-earmark-person-fill display-5 text-white"></i>
 
-            <h5 className="mt-3">Total Analyses</h5>
+            <h5 className="mt-3 text-white">Total Analyses</h5>
 
-            <h1 className="fw-bold text-primary">
+            <h1 className="display-5 fw-bold text-white">
               {dashboard.totalAnalyses}
             </h1>
 
@@ -43,14 +43,14 @@ return (
       </div>
 
       <div className="col-md-4">
-        <div className="card shadow border-0 h-100">
+        <div className="card shadow border-0 h-100 bg-success text-white">
           <div className="card-body text-center">
 
-            <i className="bi bi-speedometer2 display-4 text-success"></i>
+            <i className="bi bi-speedometer2 display-5 text-white"></i>
 
-            <h5 className="mt-3">Average Resume Score</h5>
+            <h5 className="mt-3 text-white">Average Resume Score</h5>
 
-            <h1 className="fw-bold text-success">
+            <h1 className="display-5 fw-bold text-dark">
               {dashboard.averageScore.toFixed(1)}%
             </h1>
 
@@ -59,14 +59,14 @@ return (
       </div>
 
       <div className="col-md-4">
-        <div className="card shadow border-0 h-100">
+        <div className="card shadow border-0 h-100 bg-warning">
           <div className="card-body text-center">
 
-            <i className="bi bi-graph-up-arrow display-4 text-warning"></i>
+            <i className="bi bi-graph-up-arrow display-5 text-dark"></i>
 
-            <h5 className="mt-3">Average ATS Match</h5>
+            <h5 className="mt-3 text-dark">Average ATS Match</h5>
 
-            <h1 className="fw-bold text-warning">
+            <h1 className="display-5 fw-bold text-dark">
               {dashboard.averageAtsMatch.toFixed(1)}%
             </h1>
 

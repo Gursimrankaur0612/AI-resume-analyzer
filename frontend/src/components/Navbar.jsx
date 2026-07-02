@@ -1,38 +1,41 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+
       <div className="container">
 
-        <Link className="navbar-brand fw-bold" to="/">
+        <NavLink className="navbar-brand fw-bold fs-4" to="/">
           🤖 AI Resume Analyzer
-        </Link>
+        </NavLink>
 
         <div className="navbar-nav ms-auto">
 
-          <Link className="nav-link" to="/">
+          <NavLink className="nav-link" to="/">
             Dashboard
-          </Link>
+          </NavLink>
 
-          <Link className="nav-link" to="/analyze">
+          <NavLink className="nav-link" to="/analyze">
             Resume Analyzer
-          </Link>
+          </NavLink>
 
-          <Link className="nav-link" to="/interview">
+          <NavLink className="nav-link" to="/interview">
             Interview AI
-          </Link>
+          </NavLink>
 
-          <Link className="nav-link" to="/improver">
+          <NavLink className="nav-link" to="/improver">
             Resume Improver
-          </Link>
+          </NavLink>
 
-          <Link className="nav-link" to="/history">
+          <NavLink className="nav-link" to="/history">
             History
-          </Link>
+          </NavLink>
 
         </div>
+
       </div>
+
     </nav>
   );
 }
