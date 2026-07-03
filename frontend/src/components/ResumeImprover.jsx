@@ -42,11 +42,18 @@ function ResumeImprover() {
 
         <div className="card shadow-sm p-4">
 
-            <h3>AI Resume Improver</h3>
+            <h2 className="mb-4 fw-bold">
+    ✨ AI Resume Improver
+</h2>
+
+<p className="text-muted">
+    Upload your resume and let AI rewrite it to improve ATS score and professionalism.
+</p>
 
             <input
                 className="form-control"
                 type="file"
+                accept=".pdf"
                 onChange={(e) => setFile(e.target.files[0])}
             />
 
@@ -63,25 +70,30 @@ function ResumeImprover() {
             <br />
 
             <button
-                className="btn btn-primary"
-                onClick={improveResume}
-            >
-                Improve Resume
-            </button>
+    className="btn btn-success w-100"
+    disabled={loading}
+    onClick={improveResume}
+>
+    {loading ? "Improving Resume..." : "✨ Improve Resume"}
+</button>
 
             <br />
 
             {loading &&
-                <div className="alert alert-info">
-                    AI is improving your resume...
-                </div>
+               <div className="alert alert-primary mt-3">
+
+    <div className="spinner-border spinner-border-sm me-2"></div>
+
+    Gemini AI is rewriting your resume...
+
+</div>
             }
 
             {improvements && (
     <div className="card mt-4 border-success shadow-sm">
 
         <div className="card-header bg-success text-white">
-            AI Resume Suggestions
+            ✨ AI Enhanced Resume
         </div>
 
         <div className="card-body">
@@ -90,7 +102,8 @@ function ResumeImprover() {
                 style={{
                     whiteSpace: "pre-wrap",
                     fontFamily: "inherit",
-                    fontSize: "15px",
+                    fontSize:"16px",
+                    lineHeight:"1.8",
                     marginBottom: 0
                 }}
             >
