@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 function ResumeImprover() {
@@ -7,6 +7,24 @@ function ResumeImprover() {
     const [jobId, setJobId] = useState("");
     const [improvements, setImprovements] = useState("");
     const [loading, setLoading] = useState(false);
+    const [jobs, setJobs] = useState([]);
+
+    useEffect(() => {
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/api/jobdescriptions"
+      );
+
+      setJobs(response.data);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to fetch jobs.");
+    }
+  };
+
+  fetchJobs();
+}, []);
 
     const improveResume = async () => {
 
@@ -59,13 +77,19 @@ function ResumeImprover() {
 
             <br />
 
-            <input
-                className="form-control"
-                type="number"
-                placeholder="Enter Job ID"
-                value={jobId}
-                onChange={(e) => setJobId(e.target.value)}
-            />
+            <select
+    className="form-select"
+    value={jobId}
+    onChange={(e) => setJobId(e.target.value)}
+>
+    <option value="">Select a Job</option>
+
+    {jobs.map((job) => (
+        <option key={job.id} value={job.id}>
+            {job.jobTitle} - {job.companyName}
+        </option>
+    ))}
+</select>
 
             <br />
 
