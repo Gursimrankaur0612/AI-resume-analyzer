@@ -13,8 +13,12 @@ function Navbar() {
         <div className="navbar-nav ms-auto">
 
           <NavLink className="nav-link" to="/">
-            Dashboard
-          </NavLink>
+  Home
+</NavLink>
+
+<NavLink className="nav-link" to="/dashboard">
+  Dashboard
+</NavLink>
 
           <NavLink className="nav-link" to="/analyze">
             Resume Analyzer

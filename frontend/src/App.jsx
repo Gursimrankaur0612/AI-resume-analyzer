@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 
+import Home from "./pages/Home";
 import DashboardPage from "./pages/DashboardPage";
 import ResumeAnalyzerPage from "./pages/ResumeAnalyzerPage";
 import InterviewPage from "./pages/InterviewPage";
@@ -18,23 +19,37 @@ function App() {
 
         <Routes>
 
-          <Route path="/" element={<DashboardPage />} />
+          {/* Home */}
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
+          {/* Dashboard */}
+          <Route
+            path="/dashboard"
+            element={<DashboardPage />}
+          />
+
+          {/* Resume Analyzer */}
           <Route
             path="/analyze"
             element={<ResumeAnalyzerPage />}
           />
 
+          {/* Interview AI */}
           <Route
             path="/interview"
             element={<InterviewPage />}
           />
 
+          {/* Resume Improver */}
           <Route
             path="/improver"
             element={<ResumeImproverPage />}
           />
 
+          {/* History */}
           <Route
             path="/history"
             element={<HistoryPage />}
