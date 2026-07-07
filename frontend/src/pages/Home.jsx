@@ -14,9 +14,10 @@ function Home() {
         <div className="hero-circle circle1"></div>
         <div className="hero-circle circle2"></div>
 
-        <h1 className="display-2 fw-bold">
-          🤖 AI Resume Analyzer
-        </h1>
+       <h1 className="display-2 fw-bold">
+  <i className="bi bi-robot text-primary me-3"></i>
+  AI Resume Analyzer
+</h1>
 
         <p className="lead text-secondary mt-4">
           Analyze your resume, improve ATS score, generate interview
@@ -42,6 +43,62 @@ function Home() {
         </div>
 
       </div>
+      {/* ================= STATS ================= */}
+
+<div
+  className="row text-center my-5"
+  data-aos="fade-up"
+>
+
+  <div className="col-md-3">
+
+    <div className="stat-card">
+
+      <h2>1000+</h2>
+
+      <p>Resumes Analyzed</p>
+
+    </div>
+
+  </div>
+
+  <div className="col-md-3">
+
+    <div className="stat-card">
+
+      <h2>95%</h2>
+
+      <p>ATS Accuracy</p>
+
+    </div>
+
+  </div>
+
+  <div className="col-md-3">
+
+    <div className="stat-card">
+
+      <h2>24/7</h2>
+
+      <p>AI Assistance</p>
+
+    </div>
+
+  </div>
+
+  <div className="col-md-3">
+
+    <div className="stat-card">
+
+      <h2>Gemini</h2>
+
+      <p>Powered AI</p>
+
+    </div>
+
+  </div>
+
+</div>
 
       {/* ================= FEATURES ================= */}
 
@@ -57,7 +114,7 @@ function Home() {
 
             <div className="card-body text-center p-4">
 
-              <h1 className="mb-3">📄</h1>
+              <i className="bi bi-file-earmark-text-fill display-3 text-primary"></i>
 
               <h4 className="fw-bold">
                 Resume Analysis
@@ -84,7 +141,7 @@ function Home() {
 
             <div className="card-body text-center p-4">
 
-              <h1 className="mb-3">🎯</h1>
+              <i className="bi bi-person-workspace display-3 text-success"></i>
 
               <h4 className="fw-bold">
                 Interview AI
@@ -111,7 +168,7 @@ function Home() {
 
             <div className="card-body text-center p-4">
 
-              <h1 className="mb-3">✨</h1>
+              <i className="bi bi-stars display-3 text-warning"></i>
 
               <h4 className="fw-bold">
                 Resume Improver
@@ -145,7 +202,7 @@ function Home() {
 
           <div className="col-md-3">
 
-            <h1>⚡</h1>
+            <i className="bi bi-lightning-charge-fill display-3 text-warning"></i>
 
             <h5 className="fw-bold mt-3">
               Fast
@@ -159,7 +216,7 @@ function Home() {
 
           <div className="col-md-3">
 
-            <h1>🤖</h1>
+           <i className="bi bi-cpu-fill display-3 text-primary"></i>
 
             <h5 className="fw-bold mt-3">
               AI Powered
@@ -173,7 +230,7 @@ function Home() {
 
           <div className="col-md-3">
 
-            <h1>📊</h1>
+            <i className="bi bi-bar-chart-fill display-3 text-success"></i>
 
             <h5 className="fw-bold mt-3">
               ATS Friendly
@@ -187,7 +244,7 @@ function Home() {
 
           <div className="col-md-3">
 
-            <h1>🎯</h1>
+            <i className="bi bi-bullseye display-3 text-danger"></i>
 
             <h5 className="fw-bold mt-3">
               Placement Ready
