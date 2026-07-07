@@ -1,34 +1,40 @@
 import { Link } from "react-router-dom";
+import "../styles/home.css";
 
 function Home() {
   return (
     <div>
 
-      {/* Hero Section */}
+      {/* ================= HERO ================= */}
 
-      <div className="text-center py-5">
+      <div
+        className="hero-section text-center position-relative overflow-hidden"
+        data-aos="fade-up"
+      >
+        <div className="hero-circle circle1"></div>
+        <div className="hero-circle circle2"></div>
 
-        <h1 className="display-3 fw-bold">
+        <h1 className="display-2 fw-bold">
           🤖 AI Resume Analyzer
         </h1>
 
-        <p className="lead text-muted mt-3">
+        <p className="lead text-secondary mt-4">
           Analyze your resume, improve ATS score, generate interview
           questions and optimize your resume using Google Gemini AI.
         </p>
 
-        <div className="mt-4">
+        <div className="mt-5">
 
           <Link
             to="/dashboard"
-            className="btn btn-primary btn-lg me-3"
+            className="btn btn-primary btn-lg px-4 me-3"
           >
             🚀 Get Started
           </Link>
 
           <Link
             to="/analyze"
-            className="btn btn-outline-dark btn-lg"
+            className="btn btn-outline-dark btn-lg px-4"
           >
             📄 Analyze Resume
           </Link>
@@ -37,23 +43,29 @@ function Home() {
 
       </div>
 
-      {/* Feature Cards */}
+      {/* ================= FEATURES ================= */}
 
-      <div className="row g-4 mt-3">
+      <div className="row g-4 mt-5">
 
         <div className="col-md-4">
 
-          <div className="card shadow border-0 h-100">
+          <div
+            className="card feature-card shadow border-0 h-100"
+            data-aos="zoom-in"
+            data-aos-delay="0"
+          >
 
-            <div className="card-body text-center">
+            <div className="card-body text-center p-4">
 
-              <h1>📄</h1>
+              <h1 className="mb-3">📄</h1>
 
-              <h4>Resume Analysis</h4>
+              <h4 className="fw-bold">
+                Resume Analysis
+              </h4>
 
-              <p className="text-muted">
-                Upload your resume and receive ATS score,
-                missing skills, matched skills and AI suggestions.
+              <p className="text-muted mt-3">
+                Upload your resume and instantly receive ATS score,
+                matched skills, missing skills and AI suggestions.
               </p>
 
             </div>
@@ -64,17 +76,23 @@ function Home() {
 
         <div className="col-md-4">
 
-          <div className="card shadow border-0 h-100">
+          <div
+            className="card feature-card shadow border-0 h-100"
+            data-aos="zoom-in"
+            data-aos-delay="150"
+          >
 
-            <div className="card-body text-center">
+            <div className="card-body text-center p-4">
 
-              <h1>🎯</h1>
+              <h1 className="mb-3">🎯</h1>
 
-              <h4>Interview AI</h4>
+              <h4 className="fw-bold">
+                Interview AI
+              </h4>
 
-              <p className="text-muted">
+              <p className="text-muted mt-3">
                 Generate personalized interview questions
-                based on your resume and selected job.
+                based on your resume and selected job description.
               </p>
 
             </div>
@@ -85,17 +103,23 @@ function Home() {
 
         <div className="col-md-4">
 
-          <div className="card shadow border-0 h-100">
+          <div
+            className="card feature-card shadow border-0 h-100"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
 
-            <div className="card-body text-center">
+            <div className="card-body text-center p-4">
 
-              <h1>✨</h1>
+              <h1 className="mb-3">✨</h1>
 
-              <h4>Resume Improver</h4>
+              <h4 className="fw-bold">
+                Resume Improver
+              </h4>
 
-              <p className="text-muted">
-                Let Gemini AI rewrite your resume
-                to maximize ATS score and readability.
+              <p className="text-muted mt-3">
+                Let Gemini AI rewrite your resume to improve
+                ATS compatibility and professional quality.
               </p>
 
             </div>
@@ -106,53 +130,91 @@ function Home() {
 
       </div>
 
-      {/* Why Choose */}
+      {/* ================= WHY CHOOSE ================= */}
 
-      <div className="mt-5 p-5 rounded bg-light">
+      <div
+        className="mt-5 p-5 rounded-4 bg-light shadow-sm"
+        data-aos="fade-up"
+      >
 
-        <h2 className="text-center mb-4">
+        <h2 className="text-center fw-bold mb-5">
           Why Choose AI Resume Analyzer?
         </h2>
 
         <div className="row text-center">
 
           <div className="col-md-3">
+
             <h1>⚡</h1>
-            <h5>Fast</h5>
-            <p>Analyze resumes within seconds.</p>
+
+            <h5 className="fw-bold mt-3">
+              Fast
+            </h5>
+
+            <p className="text-muted">
+              Analyze resumes within seconds.
+            </p>
+
           </div>
 
           <div className="col-md-3">
+
             <h1>🤖</h1>
-            <h5>AI Powered</h5>
-            <p>Powered by Google Gemini AI.</p>
+
+            <h5 className="fw-bold mt-3">
+              AI Powered
+            </h5>
+
+            <p className="text-muted">
+              Powered by Google Gemini AI.
+            </p>
+
           </div>
 
           <div className="col-md-3">
+
             <h1>📊</h1>
-            <h5>ATS Friendly</h5>
-            <p>Improve resume compatibility.</p>
+
+            <h5 className="fw-bold mt-3">
+              ATS Friendly
+            </h5>
+
+            <p className="text-muted">
+              Improve resume compatibility with recruiters.
+            </p>
+
           </div>
 
           <div className="col-md-3">
+
             <h1>🎯</h1>
-            <h5>Placement Ready</h5>
-            <p>Prepare confidently for interviews.</p>
+
+            <h5 className="fw-bold mt-3">
+              Placement Ready
+            </h5>
+
+            <p className="text-muted">
+              Prepare confidently for interviews.
+            </p>
+
           </div>
 
         </div>
 
       </div>
 
-      {/* Footer */}
+      {/* ================= FOOTER ================= */}
 
-      <div className="text-center mt-5 mb-4 text-muted">
+      <div
+        className="text-center mt-5 mb-4 text-muted"
+        data-aos="fade-up"
+      >
 
         <hr />
 
-        <p>
-          AI Resume Analyzer • Built with React, Spring Boot,
-          MySQL & Google Gemini AI
+        <p className="mb-0">
+          <strong>AI Resume Analyzer</strong> • Built with React,
+          Spring Boot, MySQL & Google Gemini AI
         </p>
 
       </div>

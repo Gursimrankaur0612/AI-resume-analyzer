@@ -8,8 +8,19 @@ import ResumeAnalyzerPage from "./pages/ResumeAnalyzerPage";
 import InterviewPage from "./pages/InterviewPage";
 import ResumeImproverPage from "./pages/ResumeImproverPage";
 import HistoryPage from "./pages/HistoryPage";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
+
 
 function App() {
+   useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+    });
+  }, []);
   return (
     <BrowserRouter>
 

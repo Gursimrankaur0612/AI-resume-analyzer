@@ -6,35 +6,96 @@ function Navbar() {
 
       <div className="container">
 
-        <NavLink className="navbar-brand fw-bold fs-4" to="/">
+        <NavLink
+          className="navbar-brand fw-bold fs-4"
+          to="/"
+        >
           🤖 AI Resume Analyzer
         </NavLink>
 
-        <div className="navbar-nav ms-auto">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-          <NavLink className="nav-link" to="/">
-  Home
-</NavLink>
+        <div
+          className="collapse navbar-collapse"
+          id="navbarNav"
+        >
 
-<NavLink className="nav-link" to="/dashboard">
-  Dashboard
-</NavLink>
+          <ul className="navbar-nav ms-auto">
 
-          <NavLink className="nav-link" to="/analyze">
-            Resume Analyzer
-          </NavLink>
+            <li className="nav-item">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active fw-bold" : "nav-link"
+                }
+              >
+                Home
+              </NavLink>
+            </li>
 
-          <NavLink className="nav-link" to="/interview">
-            Interview AI
-          </NavLink>
+            <li className="nav-item">
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active fw-bold" : "nav-link"
+                }
+              >
+                Dashboard
+              </NavLink>
+            </li>
 
-          <NavLink className="nav-link" to="/improver">
-            Resume Improver
-          </NavLink>
+            <li className="nav-item">
+              <NavLink
+                to="/analyze"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active fw-bold" : "nav-link"
+                }
+              >
+                Resume Analyzer
+              </NavLink>
+            </li>
 
-          <NavLink className="nav-link" to="/history">
-            History
-          </NavLink>
+            <li className="nav-item">
+              <NavLink
+                to="/interview"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active fw-bold" : "nav-link"
+                }
+              >
+                Interview AI
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink
+                to="/improver"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active fw-bold" : "nav-link"
+                }
+              >
+                Resume Improver
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink
+                to="/history"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active fw-bold" : "nav-link"
+                }
+              >
+                History
+              </NavLink>
+            </li>
+
+          </ul>
 
         </div>
 

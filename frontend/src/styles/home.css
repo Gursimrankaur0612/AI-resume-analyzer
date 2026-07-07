@@ -1,0 +1,128 @@
+/* ================= HERO ================= */
+
+.hero-section{
+    background: linear-gradient(135deg,#eef6ff,#ffffff);
+    padding:120px 40px;
+    border-radius:30px;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Floating Gradient Circles */
+
+.hero-circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.45;
+}
+
+.circle1{
+    width:260px;
+    height:260px;
+    background:#4f9dff;
+    top:-80px;
+    left:-80px;
+}
+
+.circle2{
+    width:230px;
+    height:230px;
+    background:#b892ff;
+    bottom:-70px;
+    right:-70px;
+}
+
+.hero-section h1,
+.hero-section p,
+.hero-section .btn{
+    position:relative;
+    z-index:2;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn-primary{
+    transition:.35s;
+    border-radius:12px;
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(13,110,253,.35);
+}
+
+.btn-outline-dark{
+    transition:.35s;
+    border-radius:12px;
+}
+
+.btn-outline-dark:hover{
+    transform:translateY(-4px);
+}
+
+/* ================= FEATURE CARDS ================= */
+
+.feature-card{
+    transition:.35s;
+    cursor:pointer;
+    border-radius:18px;
+}
+
+.feature-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.feature-card h1{
+
+    font-size:55px;
+
+}
+
+/* ================= WHY CHOOSE ================= */
+
+.bg-light{
+
+    border-radius:25px;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    color:#777;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+.hero-section{
+
+padding:70px 25px;
+
+}
+
+.hero-section h1{
+
+font-size:2.4rem;
+
+}
+
+.hero-section .btn{
+
+display:block;
+
+margin:10px auto;
+
+width:230px;
+
+}
+
+}
