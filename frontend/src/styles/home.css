@@ -165,3 +165,26 @@ width:230px;
 }
 
 }
+/* ================= HOW IT WORKS ================= */
+
+.process-card{
+
+    padding:25px;
+
+    border-radius:18px;
+
+    background:white;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.process-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}

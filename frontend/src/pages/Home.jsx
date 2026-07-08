@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/home.css";
+import CountUp from "react-countup";
 
 function Home() {
   return (
@@ -93,6 +94,96 @@ function Home() {
       <h2>Gemini</h2>
 
       <p>Powered AI</p>
+
+    </div>
+
+  </div>
+
+</div>
+{/* ================= HOW IT WORKS ================= */}
+
+<div
+  className="mt-5"
+  data-aos="fade-up"
+>
+
+  <h2 className="text-center fw-bold mb-5">
+    How It Works
+  </h2>
+
+  <div className="row text-center">
+
+    <div className="col-md-2">
+
+      <div className="process-card">
+
+        <i className="bi bi-upload display-4 text-primary"></i>
+
+        <h5 className="mt-3">
+          Upload Resume
+        </h5>
+
+      </div>
+
+    </div>
+
+    <div className="col-md-1 d-flex align-items-center justify-content-center">
+
+      <i className="bi bi-arrow-right display-6 text-secondary"></i>
+
+    </div>
+
+    <div className="col-md-2">
+
+      <div className="process-card">
+
+        <i className="bi bi-robot display-4 text-success"></i>
+
+        <h5 className="mt-3">
+          Gemini AI
+        </h5>
+
+      </div>
+
+    </div>
+
+    <div className="col-md-1 d-flex align-items-center justify-content-center">
+
+      <i className="bi bi-arrow-right display-6 text-secondary"></i>
+
+    </div>
+
+    <div className="col-md-2">
+
+      <div className="process-card">
+
+        <i className="bi bi-bar-chart-fill display-4 text-warning"></i>
+
+        <h5 className="mt-3">
+          ATS Analysis
+        </h5>
+
+      </div>
+
+    </div>
+
+    <div className="col-md-1 d-flex align-items-center justify-content-center">
+
+      <i className="bi bi-arrow-right display-6 text-secondary"></i>
+
+    </div>
+
+    <div className="col-md-2">
+
+      <div className="process-card">
+
+        <i className="bi bi-person-workspace display-4 text-danger"></i>
+
+        <h5 className="mt-3">
+          Interview Prep
+        </h5>
+
+      </div>
 
     </div>
 
