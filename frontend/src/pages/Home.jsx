@@ -190,6 +190,95 @@ function Home() {
   </div>
 
 </div>
+{/* ================= TECH STACK ================= */}
+
+<div
+  className="mt-5"
+  data-aos="fade-up"
+>
+
+  <h2 className="text-center fw-bold mb-5">
+    Built With
+  </h2>
+
+  <div className="row text-center g-4">
+
+    <div className="col-md-2 col-6">
+
+      <div className="tech-card">
+
+        <i className="bi bi-filetype-java display-3 text-danger"></i>
+
+        <h6 className="mt-3">Java</h6>
+
+      </div>
+
+    </div>
+
+    <div className="col-md-2 col-6">
+
+      <div className="tech-card">
+
+        <i className="bi bi-server display-3 text-success"></i>
+
+        <h6 className="mt-3">Spring Boot</h6>
+
+      </div>
+
+    </div>
+
+    <div className="col-md-2 col-6">
+
+      <div className="tech-card">
+
+        <i className="bi bi-database-fill display-3 text-primary"></i>
+
+        <h6 className="mt-3">MySQL</h6>
+
+      </div>
+
+    </div>
+
+    <div className="col-md-2 col-6">
+
+      <div className="tech-card">
+
+        <i className="bi bi-google display-3 text-warning"></i>
+
+        <h6 className="mt-3">Gemini AI</h6>
+
+      </div>
+
+    </div>
+
+    <div className="col-md-2 col-6">
+
+      <div className="tech-card">
+
+        <i className="bi bi-bootstrap-fill display-3 text-purple"></i>
+
+        <h6 className="mt-3">Bootstrap</h6>
+
+      </div>
+
+    </div>
+
+    <div className="col-md-2 col-6">
+
+      <div className="tech-card">
+
+        <i className="bi bi-filetype-jsx display-3 text-info"></i>
+
+        <h6 className="mt-3">React</h6>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
 
       {/* ================= FEATURES ================= */}
 

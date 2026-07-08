@@ -100,27 +100,6 @@
 
 }
 
-/* ================= FEATURE CARDS ================= */
-
-.feature-card{
-    transition:.35s;
-    cursor:pointer;
-    border-radius:18px;
-}
-
-.feature-card:hover{
-
-    transform:translateY(-12px);
-
-    box-shadow:0 20px 40px rgba(0,0,0,.15);
-
-}
-
-.feature-card h1{
-
-    font-size:55px;
-
-}
 
 /* ================= WHY CHOOSE ================= */
 
@@ -186,5 +165,34 @@ width:230px;
     transform:translateY(-8px);
 
     box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+/* ================= TECH STACK ================= */
+
+.tech-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.tech-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.text-purple{
+
+    color:#7952b3;
 
 }
