@@ -100,6 +100,27 @@
 
 }
 
+/* ================= FEATURE CARDS ================= */
+
+.feature-card{
+    transition:.35s;
+    cursor:pointer;
+    border-radius:18px;
+}
+
+.feature-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.feature-card h1{
+
+    font-size:55px;
+
+}
 
 /* ================= WHY CHOOSE ================= */
 
@@ -195,4 +216,26 @@ width:230px;
 
     color:#7952b3;
 
+}
+.step-box{
+    padding:30px;
+    border-radius:20px;
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+    height:100%;
+}
+
+.step-box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.step-box h1{
+    font-size:55px;
+}
+
+.step-box h5{
+    margin-top:15px;
+    font-weight:700;
 }
