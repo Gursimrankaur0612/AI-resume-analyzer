@@ -366,51 +366,7 @@ function Home() {
         </div>
 
       </div>
-      {/* ================= HOW IT WORKS ================= */}
-
-<div className="mt-5" data-aos="fade-up">
-
-  <h2 className="text-center fw-bold mb-5">
-    How It Works
-  </h2>
-
-  <div className="row text-center">
-
-    <div className="col-lg-3 col-md-6 mb-4">
-      <div className="step-box">
-        <h1>📄</h1>
-        <h5>Upload Resume</h5>
-        <p>Upload your PDF resume securely.</p>
-      </div>
-    </div>
-
-    <div className="col-lg-3 col-md-6 mb-4">
-      <div className="step-box">
-        <h1>🎯</h1>
-        <h5>Select Job</h5>
-        <p>Choose the target job description.</p>
-      </div>
-    </div>
-
-    <div className="col-lg-3 col-md-6 mb-4">
-      <div className="step-box">
-        <h1>🤖</h1>
-        <h5>AI Analysis</h5>
-        <p>Gemini analyzes your resume instantly.</p>
-      </div>
-    </div>
-
-    <div className="col-lg-3 col-md-6 mb-4">
-      <div className="step-box">
-        <h1>🚀</h1>
-        <h5>Get Results</h5>
-        <p>Receive ATS score, suggestions and interview questions.</p>
-      </div>
-    </div>
-
-  </div>
-
-</div>
+      
 
       {/* ================= WHY CHOOSE ================= */}
 

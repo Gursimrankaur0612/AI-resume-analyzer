@@ -19,18 +19,28 @@ function Dashboard() {
 return (
   <div>
 
-    <h2 className="mb-4 fw-bold">
-      <i className="bi bi-speedometer2 me-2"></i>
-      Dashboard
-    </h2>
+    <div className="mb-5">
+
+  <h1 className="fw-bold">
+    📊 Dashboard
+  </h1>
+
+  <p className="text-muted fs-5">
+    Welcome to your AI Resume Analyzer dashboard.
+    Monitor your resume analyses, ATS performance and AI insights.
+  </p>
+
+</div>
 
     <div className="row g-4">
 
       <div className="col-md-4">
-        <div className="card shadow border-0 h-100 bg-primary text-white">
+        <div className="card dashboard-card shadow bg-primary text-white h-100">
           <div className="card-body text-center">
 
-            <i className="bi bi-file-earmark-person-fill display-5 text-white"></i>
+           <div className="dashboard-icon">
+    <i className="bi bi-file-earmark-person-fill display-5"></i>
+</div>
 
             <h5 className="mt-3 text-white">Total Analyses</h5>
 
@@ -43,10 +53,12 @@ return (
       </div>
 
       <div className="col-md-4">
-        <div className="card shadow border-0 h-100 bg-success text-white">
+        <div className="card dashboard-card shadow bg-success text-white h-100">
           <div className="card-body text-center">
 
-            <i className="bi bi-speedometer2 display-5 text-white"></i>
+            <div className="dashboard-icon">
+    <i className="bi bi-speedometer2 display-5"></i>
+</div>
 
             <h5 className="mt-3 text-white">Average Resume Score</h5>
 
@@ -59,10 +71,12 @@ return (
       </div>
 
       <div className="col-md-4">
-        <div className="card shadow border-0 h-100 bg-warning">
+        <div className="card dashboard-card shadow bg-warning h-100">
           <div className="card-body text-center">
 
-            <i className="bi bi-graph-up-arrow display-5 text-dark"></i>
+            <div className="dashboard-icon">
+    <i className="bi bi-graph-up-arrow display-5"></i>
+</div>
 
             <h5 className="mt-3 text-dark">Average ATS Match</h5>
 
