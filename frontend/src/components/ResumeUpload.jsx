@@ -55,50 +55,119 @@ function ResumeUpload() {
   console.log("Jobs State:", jobs);
 
   return (
-    <div className="card p-4 mt-4">
+    <div className="card shadow-lg border-0 rounded-4 p-5 mt-4">
 
-      <h2 className="mb-4">
-        Upload Resume
-      </h2>
+  <div className="text-center mb-5">
 
-      <input
-        className="form-control"
-        type="file"
-        accept=".pdf"
-        onChange={(e) => setFile(e.target.files[0])}
-      />
+    <h1 className="display-5 fw-bold">
+      📄 Upload Resume
+    </h1>
+
+    <p className="text-muted fs-5">
+      Upload your resume and select a job description.
+      Our AI will analyze your resume, calculate ATS score,
+      identify missing skills, and generate improvement suggestions.
+    </p>
+
+  </div>
+
+      <div className="border rounded-4 p-5 text-center bg-light">
+
+  <i
+    className="bi bi-cloud-arrow-up-fill text-primary"
+    style={{ fontSize: "60px" }}
+  ></i>
+
+  <h4 className="mt-3">
+    Upload Your Resume
+  </h4>
+
+  <p className="text-muted">
+    Supported format: PDF
+  </p>
+
+  <input
+    className="form-control mt-3"
+    type="file"
+    accept=".pdf"
+    onChange={(e) => setFile(e.target.files[0])}
+  />
+
+</div>
 
       <br />
 
-      <select
-        className="form-select"
-        value={jobId}
-        onChange={(e) => setJobId(e.target.value)}
-      >
-        <option value="">Select a Job</option>
+    <div className="mt-4">
 
-        {jobs.map((job) => (
-          <option key={job.id} value={job.id}>
-            {job.jobTitle} - {job.companyName}
-          </option>
-        ))}
-      </select>
+  <label className="form-label fw-bold fs-5">
 
-      <br />
+    <i className="bi bi-briefcase-fill text-primary me-2"></i>
 
-      <button
-        className="btn btn-primary"
-        disabled={loading}
-        onClick={handleUpload}
-      >
-        {loading ? "Analyzing..." : "Analyze Resume"}
-      </button>
+    Select Job Description
+
+  </label>
+
+  <select
+    className="form-select form-select-lg"
+    value={jobId}
+    onChange={(e) => setJobId(e.target.value)}
+  >
+
+    <option value="">Choose a Job Role</option>
+
+    {jobs.map((job) => (
+
+      <option key={job.id} value={job.id}>
+
+        {job.jobTitle} • {job.companyName}
+
+      </option>
+
+    ))}
+
+  </select>
+
+</div>
+
+     <div className="d-grid mt-4">
+
+  <button
+    className="btn btn-primary btn-lg py-3 fw-bold"
+    disabled={loading}
+    onClick={handleUpload}
+  >
+
+    {loading ? (
+      <>
+        <span
+          className="spinner-border spinner-border-sm me-2"
+          role="status"
+        ></span>
+
+        Analyzing Resume...
+      </>
+    ) : (
+      <>
+        <i className="bi bi-stars me-2"></i>
+        Analyze Resume with AI
+      </>
+    )}
+
+  </button>
+
+</div>
 
       {file && (
-        <p className="mt-3">
-          <strong>Selected File:</strong> {file.name}
-        </p>
-      )}
+
+  <div className="alert alert-success mt-3">
+
+    <i className="bi bi-file-earmark-pdf-fill me-2"></i>
+
+    <strong>Selected:</strong> {file.name}
+
+  </div>
+
+)}
 
       {result && <AnalysisResult result={result} />}
     </div>
