@@ -3,6 +3,7 @@ import axios from "axios";
 
 function History() {
   const [history, setHistory] = useState([]);
+  const [search, setSearch] = useState("");
   const deleteAnalysis = async (id) => {
 
   try {
@@ -75,8 +76,35 @@ const downloadReport = async (id) => {
   }, []);
 
   return (
-    <div className="card p-4 mt-4">
-      <h2>Analysis History</h2>
+    <div className="card shadow-lg border-0 rounded-4 p-5 mt-4">
+      <div className="text-center mb-4">
+
+  <h1 className="display-5 fw-bold">
+
+    <i className="bi bi-clock-history text-primary me-2"></i>
+
+    Resume Analysis History
+
+  </h1>
+
+  <p className="text-muted fs-5">
+
+    View, download and manage all previously analyzed resumes.
+
+  </p>
+
+</div>
+<div className="mb-4">
+
+  <input
+    type="text"
+    className="form-control form-control-lg"
+    placeholder="🔍 Search by Job Title..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+  />
+
+</div>
 
       <table className="table table-striped mt-3">
         <thead>
@@ -91,7 +119,13 @@ const downloadReport = async (id) => {
         </thead>
 
         <tbody>
-          {history.map((item) => (
+         {history
+  .filter((item) =>
+    (item.jobTitle || "")
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  )
+  .map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
               <td>
@@ -99,25 +133,57 @@ const downloadReport = async (id) => {
     {item.jobTitle || "General"}
   </span>
 </td>
-              <td>{item.score}</td>
-              <td>{item.atsMatch}%</td>
+             <td>
+
+  <span
+    className={`badge rounded-pill px-3 py-2 ${
+      item.score >= 80
+        ? "bg-success"
+        : item.score >= 60
+        ? "bg-warning text-dark"
+        : "bg-danger"
+    }`}
+  >
+    {item.score}%
+  </span>
+
+</td>
+              <td>
+
+  <span
+    className={`badge rounded-pill px-3 py-2 ${
+      item.atsMatch >= 80
+        ? "bg-success"
+        : item.atsMatch >= 60
+        ? "bg-warning text-dark"
+        : "bg-danger"
+    }`}
+  >
+    {item.atsMatch}%
+  </span>
+
+</td>
               <td>
   {new Date(item.analyzedAt)
     .toLocaleString()}
 </td>
              <td>
   <button
-    className="btn btn-success btn-sm me-2"
+   
+  className="btn btn-outline-primary btn-sm me-2"
     onClick={() => downloadReport(item.id)}
   >
-    Download
+    <i className="bi bi-download me-1"></i>
+
+    
   </button>
 
-  <button
-    className="btn btn-danger btn-sm"
+ <button
+  className="btn btn-outline-secondary btn-sm"
     onClick={() => deleteAnalysis(item.id)}
   >
-    Delete
+  <i className="bi bi-trash me-1"></i>
+
   </button>
 </td>
             </tr>

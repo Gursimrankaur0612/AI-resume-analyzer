@@ -7,3 +7,58 @@
     transform: translateY(-8px);
     box-shadow:0 15px 30px rgba(0,0,0,.2);
 }
+/* ================= Dashboard Cards ================= */
+
+.dashboard-card{
+
+    border:none;
+
+    border-radius:20px;
+
+    transition:all .35s ease;
+
+    overflow:hidden;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+}
+
+.dashboard-icon{
+
+    width:75px;
+
+    height:75px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(255,255,255,.25);
+
+    margin-bottom:20px;
+
+}
+
+.dashboard-card h1{
+
+    font-weight:700;
+
+}
+
+.dashboard-card h5{
+
+    font-weight:600;
+
+}

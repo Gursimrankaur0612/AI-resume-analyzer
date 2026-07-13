@@ -169,7 +169,49 @@ function ResumeUpload() {
 
 )}
 
-      {result && <AnalysisResult result={result} />}
+      {loading && (
+
+  <div className="card shadow border-0 mt-5">
+
+    <div className="card-body text-center p-5">
+
+      <div
+        className="spinner-border text-primary"
+        style={{
+          width: "4rem",
+          height: "4rem"
+        }}
+      ></div>
+
+      <h3 className="mt-4">
+        🤖 AI is analyzing your resume...
+      </h3>
+
+      <p className="text-muted">
+
+        Comparing resume with job description...
+
+        <br />
+
+        Calculating ATS score...
+
+        <br />
+
+        Detecting missing skills...
+
+        <br />
+
+        Generating AI suggestions...
+
+      </p>
+
+    </div>
+
+  </div>
+
+)}
+
+{result && <AnalysisResult result={result} />}
     </div>
   );
 }
