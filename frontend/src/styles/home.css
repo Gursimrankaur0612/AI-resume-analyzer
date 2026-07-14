@@ -163,8 +163,39 @@ margin:10px auto;
 width:230px;
 
 }
+}
+body.dark-mode .hero-section{
+
+    background:#1d2433;
 
 }
+body.dark-mode .hero-section h1{
+
+    color:white;
+
+}
+
+body.dark-mode .hero-section p{
+
+    color:#d1d5db !important;
+
+}
+body.dark-mode .hero-section .btn-outline-dark{
+
+    color:white;
+
+    border-color:white;
+
+}
+
+body.dark-mode .hero-section .btn-outline-dark:hover{
+
+    background:white;
+
+    color:#111827;
+
+}
+
 /* ================= HOW IT WORKS ================= */
 
 .process-card{
@@ -217,3 +248,41 @@ width:230px;
     color:#7952b3;
 
 }
+/* ================= DARK MODE CARDS ================= */
+
+body.dark-mode .stat-card,
+body.dark-mode .feature-card,
+body.dark-mode .process-card,
+body.dark-mode .tech-card{
+
+    background:#1f2937;
+
+    color:white;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.45);
+
+}
+
+body.dark-mode .stat-card p,
+body.dark-mode .feature-card p,
+body.dark-mode .process-card p,
+body.dark-mode .tech-card p{
+
+    color:#d1d5db;
+
+}
+
+body.dark-mode .stat-card h2,
+body.dark-mode .feature-card h4,
+body.dark-mode .process-card h4,
+body.dark-mode .tech-card h4{
+
+    color:white;
+
+}
+body.dark-mode .bg-light{
+
+    background:#1f2937 !important;
+
+}
+

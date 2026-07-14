@@ -1,14 +1,50 @@
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "../styles/navbar.css";
 
 function Navbar() {
+  const [darkMode, setDarkMode] = useState(false);
+
+useEffect(() => {
+
+  const savedMode = localStorage.getItem("darkMode");
+
+  if (savedMode === "true") {
+
+    setDarkMode(true);
+
+    document.body.classList.add("dark-mode");
+
+  }
+
+}, []);
+
+const toggleDarkMode = () => {
+
+  const newMode = !darkMode;
+
+  setDarkMode(newMode);
+
+  if (newMode) {
+
+    document.body.classList.add("dark-mode");
+
+  } else {
+
+    document.body.classList.remove("dark-mode");
+
+  }
+
+  localStorage.setItem("darkMode", newMode);
+
+};
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
 
       <div className="container">
 
         <NavLink
-          className="navbar-brand fw-bold fs-4"
+          className="navbar-brand fw-bold fs-4 text-white"
           to="/"
         >
           🤖 AI Resume Analyzer
@@ -95,6 +131,18 @@ function Navbar() {
                 History
               </NavLink>
             </li>
+            <li className="nav-item ms-3">
+
+  <button
+    className="btn btn-outline-light"
+    onClick={toggleDarkMode}
+  >
+
+    {darkMode ? "☀️" : "🌙"}
+
+  </button>
+
+</li>
 
           </ul>
 
