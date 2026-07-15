@@ -40,12 +40,11 @@ return (
     <div className="mb-5">
 
     <h1 className="display-5 fw-bold">
-        Dashboard
+           👋 Welcome Back
     </h1>
 
     <p className="text-muted fs-5">
-        Welcome back! Here's an overview of your resume analytics,
-        ATS performance, and AI-powered insights.
+        Welcome back! Here's an overview of your resume analysis performance.
     </p>
 
     <hr />
@@ -67,6 +66,12 @@ return (
             <h1 className="display-5 fw-bold text-white">
               {dashboard.totalAnalyses}
             </h1>
+            <div className="progress mt-3" style={{ height: "8px" }}>
+  <div
+    className="progress-bar bg-light"
+    style={{ width: "100%" }}
+  ></div>
+</div>
 
           </div>
         </div>
@@ -85,18 +90,14 @@ return (
             <h1 className="display-5 fw-bold text-dark">
   {dashboard.averageScore.toFixed(1)}%
 </h1>
-
-<div className="progress mt-3" style={{ height: "10px" }}>
-
+<div className="progress mt-3" style={{ height: "8px" }}>
   <div
-    className="progress-bar bg-light"
-    role="progressbar"
-    style={{
-      width: `${dashboard.averageScore}%`,
-    }}
+    className="progress-bar bg-dark"
+    style={{ width: `${dashboard.averageScore}%` }}
   ></div>
-
 </div>
+
+
 
           </div>
         </div>
@@ -115,6 +116,7 @@ return (
            <h1 className="display-5 fw-bold text-dark">
   {dashboard.averageAtsMatch.toFixed(1)}%
 </h1>
+
 
 <div className="progress mt-3" style={{ height: "10px" }}>
 
@@ -147,6 +149,12 @@ return (
       <h1 className="display-6 fw-bold text-white">
         Spring Boot
       </h1>
+      <div className="progress mt-3" style={{ height: "8px" }}>
+  <div
+    className="progress-bar bg-light"
+    style={{ width: "85%" }}
+  ></div>
+</div>
 
     </div>
   </div>
@@ -174,53 +182,69 @@ return (
 
       <tbody>
 
-        {history.map((item) => (
+  {history.length === 0 ? (
 
-          <tr key={item.id}>
+    <tr>
 
-            <td>
-  <span className="badge rounded-pill bg-primary px-3 py-2">
-    {item.jobTitle || "General"}
-  </span>
-</td>
+      <td colSpan="4" className="text-center py-4">
 
-           <td>
-  <span
-    className={`badge rounded-pill ${
-      item.score >= 80
-        ? "bg-success"
-        : item.score >= 60
-        ? "bg-warning text-dark"
-        : "bg-danger"
-    }`}
-  >
-    {item.score}%
-  </span>
-</td>
+        No resume analyses yet 📄
 
-            <td>
-  <span
-    className={`badge rounded-pill ${
-      item.atsMatch >= 80
-        ? "bg-success"
-        : item.atsMatch >= 60
-        ? "bg-warning text-dark"
-        : "bg-danger"
-    }`}
-  >
-    {item.atsMatch}%
-  </span>
-</td>
+      </td>
 
-            <td>
-              {new Date(item.analyzedAt).toLocaleDateString()}
-            </td>
+    </tr>
 
-          </tr>
+  ) : (
 
-        ))}
+    history.map((item) => (
 
-      </tbody>
+      <tr key={item.id}>
+
+        <td>
+          <span className="badge rounded-pill bg-primary px-3 py-2">
+            {item.jobTitle || "General"}
+          </span>
+        </td>
+
+        <td>
+          <span
+            className={`badge rounded-pill ${
+              item.score >= 80
+                ? "bg-success"
+                : item.score >= 60
+                ? "bg-warning text-dark"
+                : "bg-danger"
+            }`}
+          >
+            {item.score}%
+          </span>
+        </td>
+
+        <td>
+          <span
+            className={`badge rounded-pill ${
+              item.atsMatch >= 80
+                ? "bg-success"
+                : item.atsMatch >= 60
+                ? "bg-warning text-dark"
+                : "bg-danger"
+            }`}
+          >
+            {item.atsMatch}%
+          </span>
+        </td>
+
+        <td>
+          {new Date(item.analyzedAt).toLocaleDateString()}
+        </td>
+
+      </tr>
+
+    ))
+
+  )}
+
+</tbody>
 
     </table>
     <div className="text-end mt-3">

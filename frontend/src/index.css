@@ -7,23 +7,69 @@ body {
 ========================= */
 
 body.dark-mode{
-    background:#121212;
-    color:#f8f9fa;
+
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #111827,
+        #1e293b
+    );
+
+    background-attachment:fixed;
+
+    color:#f8fafc;
+
     transition:.3s;
+
 }
 
 /* Cards */
 
 body.dark-mode .card{
-    background:#1e1e1e;
-    color:#ffffff;
-    border:1px solid #333;
+
+    background:#1f2937;
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.35),
+        0 0 15px rgba(59,130,246,.08);
+
+    transition:.3s;
+
+}
+body.dark-mode .card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 20px rgba(59,130,246,.15);
+
 }
 
 /* Navbar */
 
 body.dark-mode .navbar{
-    background:#181818 !important;
+
+    background:#111827 !important;
+
+    box-shadow:0 2px 15px rgba(0,0,0,.35);
+
+}
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link{
+
+    color:white !important;
+
+}
+
+body.dark-mode .nav-link:hover{
+
+    color:#60a5fa !important;
+
 }
 
 /* Tables */
