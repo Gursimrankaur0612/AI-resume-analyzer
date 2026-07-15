@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ScoreChart from "../components/ScoreChart";
 
 function Dashboard() {
 
   const [dashboard, setDashboard] = useState(null);
   const [history, setHistory] = useState([]);
+  const [topSkill, setTopSkill] = useState("");
 
   useEffect(() => {
     axios
@@ -28,6 +30,10 @@ function Dashboard() {
 
   })
   .catch((error) => console.error(error));
+   axios
+    .get("http://localhost:8080/resume/top-skill")
+    .then((response) => setTopSkill(response.data))
+    .catch((error) => console.error(error));
   }, []);
 
   if (!dashboard) {
@@ -147,7 +153,7 @@ return (
       </h5>
 
       <h1 className="display-6 fw-bold text-white">
-        Spring Boot
+        {topSkill || "No Data"}
       </h1>
       <div className="progress mt-3" style={{ height: "8px" }}>
   <div
@@ -259,6 +265,7 @@ return (
 </div>
 
   </div>
+  <ScoreChart history={history} />
 
 </div>
 
