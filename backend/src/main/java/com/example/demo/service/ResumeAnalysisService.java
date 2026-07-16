@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -86,5 +87,40 @@ public List<SkillCount> getTopMissingSkills() {
 }
 public void delete(Long id) {
     repo.deleteById(id);
+}
+public String getTopSkill() {
+
+    List<ResumeAnalysis> analyses = repository.findAll();
+
+    Map<String, Integer> skillCount = new HashMap<>();
+
+    for (ResumeAnalysis analysis : analyses) {
+
+        if (analysis.getMissingSkills() == null) {
+            continue;
+        }
+
+        String[] skills = analysis.getMissingSkills().split(",");
+
+        for (String skill : skills) {
+
+            skill = skill.trim();
+
+            if (!skill.isEmpty()) {
+
+                skillCount.put(
+                        skill,
+                        skillCount.getOrDefault(skill, 0) + 1
+                );
+
+            }
+        }
+    }
+
+    return skillCount.entrySet()
+            .stream()
+            .max(Map.Entry.comparingByValue())
+            .map(Map.Entry::getKey)
+            .orElse("No Data");
 }
 }

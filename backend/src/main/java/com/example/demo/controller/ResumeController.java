@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -142,8 +144,9 @@ public ResumeController(
     }
     @PostMapping("/interview-questions")
 public String generateInterviewQuestions(
-        @RequestParam("file") MultipartFile file,
-        @RequestParam("jobId") Long jobId)
+       @RequestParam("file") MultipartFile file,
+@RequestParam("jobId") Long jobId,
+        @RequestParam("difficulty") String difficulty)
         throws Exception {
                 System.out.println("Interview endpoint reached!");
 
@@ -153,15 +156,25 @@ public String generateInterviewQuestions(
             jobDescriptionRepository.findById(jobId)
             .orElseThrow();
 
-    return geminiService.generateInterviewQuestions(
-            resumeText,
-            jobDescription.getDescription());
+return geminiService.generateInterviewQuestions(
+        resumeText,
+        jobDescription.getDescription(),
+        difficulty);
+}
+@PostMapping("/interview-answer")
+public String generateInterviewAnswer(
+        @RequestBody Map<String, String> request) {
+
+    String question = request.get("question");
+
+    return geminiService.generateInterviewAnswer(question);
 }
 @PostMapping("/improve")
 public String improveResume(
         @RequestParam("file") MultipartFile file,
         @RequestParam("jobId") Long jobId)
         throws Exception {
+                
 
     String resumeText = pdfService.extractText(file);
 
@@ -182,6 +195,10 @@ public DashboardResponse getDashboard() {
     public List<ResumeAnalysis> getHistory() {
         return analysisService.getAll();
     }
+    @GetMapping("/top-skill")
+public String getTopSkill() {
+    return analysisService.getTopSkill();
+}
     @GetMapping("/top-missing-skills")
 public List<SkillCount> getTopMissingSkills() {
     return analysisService.getTopMissingSkills();

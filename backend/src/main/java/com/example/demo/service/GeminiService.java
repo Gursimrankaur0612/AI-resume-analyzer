@@ -84,7 +84,10 @@ try {
 }
     
 }
-public String generateInterviewQuestions(String resumeText, String jobDescription) {
+public String generateInterviewQuestions(
+        String resumeText,
+        String jobDescription,
+        String difficulty) {
 
     String prompt = """
             You are an experienced technical interviewer.
@@ -95,14 +98,33 @@ public String generateInterviewQuestions(String resumeText, String jobDescriptio
             Job Description:
             %s
 
+            Difficulty: %s
+
             Generate:
 
-            1. Five Technical Questions
-            2. Three HR Questions
-            3. Two Scenario-Based Questions
+Generate EXACTLY 10 interview questions.
 
-            Return only the questions in plain text.
-            """.formatted(resumeText, jobDescription);
+Rules:
+
+1. Number every question separately.
+2. Do NOT group questions under headings.
+3. Do NOT use bullet points.
+4. Do NOT write "Technical Questions", "HR Questions", or "Scenario Questions".
+5. Return exactly in this format:
+
+1. Technical question
+2. Technical question
+3. Technical question
+4. Technical question
+5. Technical question
+6. HR question
+7. HR question
+8. HR question
+9. Scenario question
+10. Scenario question
+
+Return ONLY the numbered questions.
+            """.formatted(resumeText, jobDescription, difficulty);
 
     String requestBody = """
             {
@@ -147,6 +169,25 @@ public String generateInterviewQuestions(String resumeText, String jobDescriptio
         return "Unable to generate interview questions.";
     }
   }
+  public String generateInterviewAnswer(String question) {
+
+    String prompt = """
+            You are an experienced software engineer and interviewer.
+
+            Give an ideal interview answer for the following question.
+
+            Question:
+            %s
+
+            Rules:
+            - Keep the answer between 150 and 250 words.
+            - Be professional and interview-ready.
+            - Include a practical example whenever possible.
+            - Return only the answer.
+            """.formatted(question);
+
+    return callGemini(prompt);
+}
 
 public String improveResume(String resumeText, String jobDescription) {
 
@@ -214,4 +255,55 @@ public String improveResume(String resumeText, String jobDescription) {
         return "Unable to generate resume improvements.";
     }
   }
+  private String callGemini(String prompt) {
+
+    String requestBody = """
+            {
+              "contents":[
+                {
+                  "parts":[
+                    {
+                      "text":"%s"
+                    }
+                  ]
+                }
+              ]
+            }
+            """.formatted(prompt.replace("\"", "\\\""));
+
+    String url =
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
+                    + apiKey;
+
+    String response = webClient.post()
+            .uri(url)
+            .contentType(MediaType.APPLICATION_JSON)
+            .bodyValue(requestBody)
+            .retrieve()
+            .bodyToMono(String.class)
+            .block();
+
+    try {
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        JsonNode root = mapper.readTree(response);
+
+        return root
+                .path("candidates")
+                .get(0)
+                .path("content")
+                .path("parts")
+                .get(0)
+                .path("text")
+                .asText();
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+
+        return "Unable to generate AI response.";
+
+    }
+}
 }

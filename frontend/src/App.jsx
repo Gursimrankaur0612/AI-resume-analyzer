@@ -65,6 +65,7 @@ function App() {
             path="/history"
             element={<HistoryPage />}
           />
+          
 
         </Routes>
 
