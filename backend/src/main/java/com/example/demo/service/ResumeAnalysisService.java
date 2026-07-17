@@ -90,7 +90,7 @@ public void delete(Long id) {
 }
 public String getTopSkill() {
 
-    List<ResumeAnalysis> analyses = repository.findAll();
+    List<ResumeAnalysis> analyses = repo.findAll();
 
     Map<String, Integer> skillCount = new HashMap<>();
 
