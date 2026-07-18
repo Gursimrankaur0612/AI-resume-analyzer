@@ -15,4 +15,8 @@ public class HomeController {
     public String health() {
         return "OK";
     }
+    @GetMapping("/hello")
+public String hello() {
+    return "Hello Railway!";
+}
 }
