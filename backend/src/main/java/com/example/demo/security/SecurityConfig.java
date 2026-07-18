@@ -48,26 +48,16 @@ public class SecurityConfig {
         return source;
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http)
+        throws Exception {
 
-        http
-                .cors(Customizer.withDefaults())
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-        .requestMatchers("/", "/health").permitAll()
-        .requestMatchers("/auth/**").permitAll()
-        .requestMatchers("/users/**").permitAll()
-        .requestMatchers("/resume/**").permitAll()
-        .requestMatchers("/api/jobdescriptions/**").permitAll()
-        .anyRequest().authenticated()
-)
-                //.addFilterBefore(
-                    //    jwtFilter,
-                     //   UsernamePasswordAuthenticationFilter.class
-            //    );
+    http
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
+            .anyRequest().permitAll());
 
-        return http.build();
+    return http.build();
+}
     }
 }
