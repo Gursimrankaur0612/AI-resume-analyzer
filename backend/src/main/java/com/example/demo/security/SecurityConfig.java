@@ -56,11 +56,13 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/users/**").permitAll()
-                        .requestMatchers("/resume/**").permitAll()
-                        .requestMatchers("/api/jobdescriptions/**").permitAll()
-                        .anyRequest().authenticated());
+        .requestMatchers("/", "/health").permitAll()
+        .requestMatchers("/auth/**").permitAll()
+        .requestMatchers("/users/**").permitAll()
+        .requestMatchers("/resume/**").permitAll()
+        .requestMatchers("/api/jobdescriptions/**").permitAll()
+        .anyRequest().authenticated()
+)
                 //.addFilterBefore(
                     //    jwtFilter,
                      //   UsernamePasswordAuthenticationFilter.class
