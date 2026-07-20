@@ -12,8 +12,9 @@ function ResumeUpload() {
   const [jobId, setJobId] = useState("");
 
  useEffect(() => {
-  axios
-    .get("http://localhost:8080/api/jobdescriptions")
+  axios.get(
+  "https://ai-resume-analyzer-enam.onrender.com/api/jobdescriptions"
+)
     .then((response) => {
       console.log("API Response:", response.data);
       setJobs(response.data);
@@ -37,9 +38,9 @@ function ResumeUpload() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:8080/resume/analyze",
-        formData
-      );
+  "https://ai-resume-analyzer-enam.onrender.com/resume/analyze",
+  formData
+);
 
       console.log(response.data);
       setResult(response.data);
