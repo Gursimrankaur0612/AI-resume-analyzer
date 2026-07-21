@@ -30,10 +30,11 @@ public class SecurityConfig {
 
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOriginPatterns(List.of(
-                "http://localhost:*",
-                "https://*.vercel.app"
-        ));
+        configuration.setAllowedOrigins(List.of(
+    "http://localhost:5173",
+    "https://ai-resume-analyzer-one-red.vercel.app",
+    "https://ai-resume-analyzer-p3kpiv8gu-gursimrankaur0612s-projects.vercel.app"
+));
 
         configuration.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "DELETE", "OPTIONS"
@@ -56,10 +57,10 @@ public class SecurityConfig {
             throws Exception {
 
         http
-                .cors(cors -> {})
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll());
+        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
+                .anyRequest().permitAll());
 
         return http.build();
     }
