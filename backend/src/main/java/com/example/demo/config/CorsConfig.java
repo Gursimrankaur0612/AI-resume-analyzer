@@ -17,8 +17,9 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
 
                 registry.addMapping("/**")
-                        .allowedOrigins(
-                                "https://ai-resume-analyzer-one-red.vercel.app"
+                        .allowedOriginPatterns(
+                                "https://*.vercel.app",
+                                "http://localhost:5173"
                         )
                         .allowedMethods("*")
                         .allowedHeaders("*");
