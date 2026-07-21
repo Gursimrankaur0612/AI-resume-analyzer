@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import AnalysisResult from "./AnalysisResult";
 import { toast } from "react-toastify";
 
@@ -12,9 +12,7 @@ function ResumeUpload() {
   const [jobId, setJobId] = useState("");
 
  useEffect(() => {
-  axios.get(
-  "https://ai-resume-analyzer-enam.onrender.com/api/jobdescriptions"
-)
+  api.get("/api/jobdescriptions")
     .then((response) => {
       console.log("API Response:", response.data);
       setJobs(response.data);
@@ -37,10 +35,7 @@ function ResumeUpload() {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-  "https://ai-resume-analyzer-enam.onrender.com/resume/analyze",
-  formData
-);
+      const response = await api.post("/resume/analyze", formData);
 
       console.log(response.data);
       setResult(response.data);

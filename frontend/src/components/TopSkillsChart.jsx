@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 import {
   Chart as ChartJS,
@@ -26,8 +26,8 @@ function TopSkillsChart() {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/resume/top-missing-skills")
+    api
+      .get("/resume/top-missing-skills")
       .then((response) => {
         setSkills(response.data);
       })

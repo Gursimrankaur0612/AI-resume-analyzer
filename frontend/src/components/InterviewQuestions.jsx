@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function InterviewQuestions() {
   const [file, setFile] = useState(null);
@@ -15,9 +15,7 @@ const [loadingAnswer, setLoadingAnswer] = useState(null);
   useEffect(() => {
     const fetchJobs = async () => {
         try {
-            const response = await axios.get(
-                "http://localhost:8080/api/jobdescriptions"
-            );
+            const response = await api.get("/api/jobdescriptions");
 
             setJobs(response.data);
 
@@ -44,10 +42,7 @@ const [loadingAnswer, setLoadingAnswer] = useState(null);
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost:8080/resume/interview-questions",
-        formData,
-        {
+      const response = await api.post("/resume/interview-questions", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -75,12 +70,9 @@ setQuestionList(parsedQuestions);
 
     setLoadingAnswer(index);
 
-    const response = await axios.post(
-      "http://localhost:8080/resume/interview-answer",
-      {
-        question: question
-      }
-    );
+    const response = await api.post("/resume/interview-answer", {
+      question: question
+    });
 
     setAnswers(prev => ({
       ...prev,

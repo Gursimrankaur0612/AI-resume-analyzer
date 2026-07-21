@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function ResumeImprover() {
 
@@ -12,9 +12,7 @@ function ResumeImprover() {
     useEffect(() => {
   const fetchJobs = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:8080/api/jobdescriptions"
-      );
+      const response = await api.get("/api/jobdescriptions");
 
       setJobs(response.data);
     } catch (error) {
@@ -41,10 +39,7 @@ function ResumeImprover() {
 
             setLoading(true);
 
-            const response = await axios.post(
-                "http://localhost:8080/resume/improve",
-                formData
-            );
+            const response = await api.post("/resume/improve", formData);
 
             setImprovements(response.data);
 

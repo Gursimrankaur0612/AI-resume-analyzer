@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { Link } from "react-router-dom";
 import ScoreChart from "../components/ScoreChart";
 
@@ -10,12 +10,11 @@ function Dashboard() {
   const [topSkill, setTopSkill] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/resume/dashboard")
+  api.get("/resume/dashboard")
       .then((response) => setDashboard(response.data))
       .catch((error) => console.error(error));
-      axios
-  .get("http://localhost:8080/resume/history")
+      api
+  .get("/resume/history")
   .then((response) => {
 
     const latest = response.data
@@ -30,8 +29,8 @@ function Dashboard() {
 
   })
   .catch((error) => console.error(error));
-   axios
-    .get("http://localhost:8080/resume/top-skill")
+   api
+    .get("/resume/top-skill")
     .then((response) => setTopSkill(response.data))
     .catch((error) => console.error(error));
   }, []);

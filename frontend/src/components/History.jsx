@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function History() {
   const [history, setHistory] = useState([]);
@@ -8,8 +8,8 @@ function History() {
 
   try {
 
-    await axios.delete(
-      `http://localhost:8080/resume/history/${id}`
+    await api.delete(
+      `/resume/history/${id}`
     );
 
    setHistory(prev =>
@@ -24,8 +24,8 @@ const downloadReport = async (id) => {
 
   try {
 
-    const response = await axios.get(
-      `http://localhost:8080/resume/report/${id}`,
+    const response = await api.get(
+      `/resume/report/${id}`,
       {
         responseType: "blob",
       }
@@ -59,8 +59,8 @@ const downloadReport = async (id) => {
 };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/resume/history")
+    api
+      .get("/resume/history")
       .then((response) => {
        setHistory(
   response.data.sort(
