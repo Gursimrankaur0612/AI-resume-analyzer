@@ -65,7 +65,10 @@ https://github.com/Gursimrankaur0612/AI-resume-analyzer
 
 ## 📸 Screenshots
 
-_Add screenshots of Home, Dashboard, Resume Analysis, Interview AI, and Resume Improver here._
+<img width="1871" height="906" alt="Screenshot 2026-07-24 213730" src="https://github.com/user-attachments/assets/0e37a792-4c7d-4b52-849c-03e1a10a3913" />
+<img width="1897" height="952" alt="Screenshot 2026-07-24 213716" src="https://github.com/user-attachments/assets/ad569fe3-aad3-495e-b7a5-08b6da7c77b7" />
+<img width="1896" height="913" alt="image" src="https://github.com/user-attachments/assets/7bffc591-a0b3-4530-a0c2-803d3d5e5215" />
+
 
 ---
 
